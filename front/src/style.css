@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&family=Montserrat&family=Pixelify+Sans&family=Source+Code+Pro&display=swap');
+* {
+    margin : 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+/*Header*/
+
+    header {
+        margin-top: 1em;
+    }
+    .flex_header {
+        display : flex;
+        justify-content: space-between;
+        margin-right: 1.5em;
+        margin-left: 1.5em;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .flex_login {
+        display: flex;
+        gap : 3em;
+    }
+    .login {
+        color: black;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 25px;
+        padding: 1em; 
+        background-color: white;
+        box-shadow: grey 1px 1px 2px;
+    }
+    .login:hover {
+        background-color: aliceblue;
+    }
+    .inscription {
+        color: white;
+        background-color: #0976e3;
+        padding: 1em;
+        border-radius: 1em;
+    }
+    .inscription:hover {
+        opacity: 50%;
+    }
+    
+    img {
+        margin-top: 1em;
+    }
+
+    .acceuil {
+        position: absolute;
+        top: 6em;
+        left: 12em;
+        color: white;
+        font-size: 3em;
+        font-family:'Times New Roman', Times, serif;
+    }
+
+    .flex_form {
+        display: flex;
+        justify-content: center;
+    }
+    form {
+        position: absolute;
+        top: 31em;
+        left: 25em;
+
+    }
+    .searchbar_left {
+        border-right-style: dotted; 
+        border-color: transparent;
+        border-right-color: black; 
+        border-radius: 2em 0em 0em 2em;
+        width: 20em;
+        height: 4em;
+        padding-left: 1.5em;
+        font-size: 1.5em;
+        box-shadow: grey 1px 1px 2px;
+    }
+    .searchbar_right {
+        border-color: transparent;
+        border-radius: 0em 2em 2em 0em;
+        width: 20em;
+        height: 4em;
+        padding-left: 1.5em;
+        font-size: 1.5em;
+        box-shadow: grey 1px 1px 2px;
+    }
+    .searchbar_search {
+        border-radius : 3em;
+        width: 6em;
+        height: 6em;
+        color: #fff;
+        margin-left: 1em;
+        background-color: #0976e3;
+        border: none;
+    }
+
+/*Body*/
+
+body {
+    margin: none;
+    background-color: #fff;
+}
