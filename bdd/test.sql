@@ -1,6 +1,6 @@
 -- TEST Table entreprise
 INSERT INTO entreprise
-(SIRET, nom, adresse, descriptif)
+(siret, nom, adresse, descriptif)
 VALUES(1548653256487956487, 'BG Compagnie', 'Montpellier', 'Une entreprise trop cool');
 
 SELECT * FROM entreprise;
@@ -14,8 +14,8 @@ WHERE nom = 'WALLA Entreprise';
 
 -- TEST TABLE recruteur
 INSERT INTO recruteur
-(nom, prenom, email, tel, mdp, SIRET)
-VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', 0602048192, '1234', 1548653256487956487);
+(nom, prenom, email, tel, mdp, id_entreprise)
+VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', 0602048192, '1234', 4);
 
 SELECT * FROM recruteur;
 
@@ -42,8 +42,8 @@ WHERE poste = 'developpeur';
 
 -- TEST TABLE candidat
 INSERT INTO candidat
-(nom, prenom, email, mdp, tel, adresse, situation, compétences, experience, handicap)
-VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', '1234', 0602048192, 'Montpellier', 'je sais plus', 'javascript', 'paysagiste', 'non');
+(nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, experience, compétences, handicap)
+VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', '1234', 0602048192, 'Montpellier', 'bogoss de la night', 'trop motivé tas vu', 'je sais plus', 'paysagiste', 'javascript', 'non');
 
 SELECT * FROM candidat;
 

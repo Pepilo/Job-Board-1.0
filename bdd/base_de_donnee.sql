@@ -1,5 +1,5 @@
 -- Création de la base de donnée
-DROP DATABASE doby
+DROP DATABASE doby;
 CREATE DATABASE doby;
 
 -- Création de la TABLE entreprise
@@ -22,8 +22,7 @@ CREATE TABLE IF NOT EXISTS recruteur(
     prenom VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     tel INT UNIQUE NOT NULL,
-    mdp VARCHAR(255) NOT NULL,
-    id_entreprise VARCHAR(19) NOT NULL REFERENCES entreprise(id_entreprise)
+    mdp VARCHAR(255) NOT NULL
 );
 
 -- TABLE annonce
@@ -48,7 +47,8 @@ CREATE TYPE domaine AS ENUM(
 DROP TABLE IF EXISTS annonce CASCADE;
 CREATE TABLE IF NOT EXISTS annonce (
     id_annonce SERIAL PRIMARY KEY,
-    id_entreprise VARCHAR(19) NOT NULL REFERENCES entreprise(id_entreprise),
+    id_entreprise BIGINT NOT NULL REFERENCES entreprise(id_entreprise),
+    id_recruteur BIGINT NOT NULL REFERENCES recruteur(id_recruteur),
     domaine domaine NOT NULL,
     poste VARCHAR(255) NOT NULL,
     ville VARCHAR(255) NOT NULL,
@@ -90,7 +90,9 @@ CREATE TABLE IF NOT EXISTS candidat(
 -- Création de la table candidature
 DROP TABLE IF EXISTS candidature;
 CREATE TABLE IF NOT EXISTS candidature(
-    id SERIAL PRIMARY KEY,
+    id_candidature SERIAL PRIMARY KEY,
+    id_annonce BIGINT NOT NULL REFERENCES annonce(id_annonce),
+    id_candidat BIGINT NOT NULL REFERENCES candidat(id_candidat),
     nom VARCHAR(255) NOT NULL,
     prenom VARCHAR NOT NULL,
     email VARCHAR(255) NOT NULL,

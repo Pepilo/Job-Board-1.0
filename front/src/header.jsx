@@ -12,7 +12,9 @@ export function Header() {
 
     return (
         <>
-            <div className = "flex_header">
+            <div className = "flex_header">Highlights
+ PRO
+
                 <a href = "http://localhost:5173/?"><h1 id = "jb_name" style = {{color : "#331a99"}}>O'Boulot</h1></a>
                 <div className = "flex_login">
                     <p onClick = {pageLogin} className = "login">Se Connecter</p>
