@@ -14,8 +14,8 @@ WHERE nom = 'WALLA Entreprise';
 
 -- TEST TABLE recruteur
 INSERT INTO recruteur
-(nom, prenom, email, tel, mdp, id_entreprise)
-VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', 0602048192, '1234', 4);
+(nom, prenom, email, tel, mdp)
+VALUES('Scrimali', 'Antho', 'anthony.scrimali@gmail.com', 0602048192, '1234');
 
 SELECT * FROM recruteur;
 
