@@ -1,5 +1,7 @@
 import banniere_site from "./images_jb/banniere_mainpage.webp";
 
+const nb_annonces = 536016;
+
 export function Header() {
 
     const pageLogin = () => {
@@ -12,21 +14,19 @@ export function Header() {
 
     return (
         <>
-            <div className = "flex_header">Highlights
- PRO
-
-                <a href = "http://localhost:5173/?"><h1 id = "jb_name" style = {{color : "#331a99"}}>O'Boulot</h1></a>
-                <div className = "flex_login">
-                    <p onClick = {pageLogin} className = "login">Se Connecter</p>
-                    <p onClick = {pageCreaCompte} className = "inscription">Créer un compte</p>
+            <div id = "flex_header">
+                <a href = "http://localhost:5173/?"><h1 id = "jb_name">O'Boulot</h1></a>
+                <div id = "flex_login">
+                    <p onClick = {pageLogin} id = "login">Se Connecter</p>
+                    <p onClick = {pageCreaCompte} id = "inscription">Créer un compte</p>
                 </div>
             </div>
             <img src = {banniere_site}/>
-            <p className = "acceuil">586 356 offres d'emplois disponibles</p>            
-            <form className = "flex_form">
-                <input type = "text" placeholder = "Poste" className = "searchbar_left"/>
-                <input type = "text" placeholder = "Ville, département, région" className = "searchbar_right"/>
-                <input type = "submit" value = "Search" className = "searchbar_search"/>
+            <p id = "acceuil">{nb_annonces} offres d'emplois disponibles</p>            
+            <form id = "flex_header_form">
+                <input type = "text" placeholder = "Poste" id = "searchbar_left"/>
+                <input type = "text" placeholder = "Ville, département, région" id = "searchbar_right"/>
+                <input type = "submit" value = "Search" id = "searchbar_search"/>
             </form>      
         </>
     )

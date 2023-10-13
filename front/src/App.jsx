@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import "./style.css";
 import {Header} from "./header.jsx";
+import {Login} from "./login.jsx";
 
 const trop_style = {color : "#2c038c"};
 
@@ -24,6 +25,7 @@ function App() {
         <header>
           <Header/>
         </header>
+          <Login/>
       </body>
     </>
   )

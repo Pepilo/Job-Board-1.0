@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Lobster&family=Montserrat&family=Pixelify+Sans&family=Source+Code+Pro&display=swap');
+
 * {
     margin : 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
 }
+
 /*Header*/
 
     header {
         margin-top: 1em;
+        position: relative;
+        width: 100%;
+        height: 100%;
     }
-    .flex_header {
+    #flex_header {
         display : flex;
         justify-content: space-between;
         margin-right: 1.5em;
@@ -19,12 +24,15 @@
     a {
         text-decoration: none;
     }
+    #jb_name {
+        color : "#331a99"
+    }
 
-    .flex_login {
+    #flex_login {
         display: flex;
         gap : 3em;
     }
-    .login {
+    #login {
         color: black;
         border-style: solid;
         border-width: 1px;
@@ -32,71 +40,75 @@
         padding: 1em; 
         background-color: white;
         box-shadow: grey 1px 1px 2px;
+        height: 35%;
     }
-    .login:hover {
+    #login:hover {
         background-color: aliceblue;
     }
-    .inscription {
+    #inscription {
         color: white;
         background-color: #0976e3;
         padding: 1em;
         border-radius: 1em;
+        height: 35%;
     }
-    .inscription:hover {
+    #inscription:hover {
         opacity: 50%;
     }
     
     img {
         margin-top: 1em;
+        width : 100%;
+        height : 20em;
     }
 
-    .acceuil {
+    #acceuil {
         position: absolute;
-        top: 6em;
-        left: 12em;
+        top: 50%;
+        left: 28%;
         color: white;
-        font-size: 3em;
+        font-size: 3vw;
+        width: 50%;
         font-family:'Times New Roman', Times, serif;
     }
 
-    .flex_form {
+    #flex_header_form {
         display: flex;
         justify-content: center;
-    }
-    form {
         position: absolute;
-        top: 31em;
-        left: 25em;
-
+        top: 90%;
+        left: 13%;
+        width: 80%;
+        height: 40%;
     }
-    .searchbar_left {
+    #searchbar_left {
         border-right-style: dotted; 
         border-color: transparent;
         border-right-color: black; 
         border-radius: 2em 0em 0em 2em;
-        width: 20em;
-        height: 4em;
         padding-left: 1.5em;
-        font-size: 1.5em;
+        font-size: 1.5vw;
         box-shadow: grey 1px 1px 2px;
+        width: 35%;
+        height: 40%;
     }
-    .searchbar_right {
+    #searchbar_right {
         border-color: transparent;
         border-radius: 0em 2em 2em 0em;
-        width: 20em;
-        height: 4em;
         padding-left: 1.5em;
-        font-size: 1.5em;
+        font-size: 1.5vw;
         box-shadow: grey 1px 1px 2px;
+        width: 35%;
+        height: 40%;
     }
-    .searchbar_search {
+    #searchbar_search {
         border-radius : 3em;
-        width: 6em;
-        height: 6em;
         color: #fff;
         margin-left: 1em;
         background-color: #0976e3;
         border: none;
+        width: 5.5%;
+        height: 40%;
     }
 
 /*Body*/
@@ -104,4 +116,66 @@
 body {
     margin: none;
     background-color: #fff;
+}
+
+/*Page de Login*/
+
+#login_body {
+    margin-top: 2em;
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    box-shadow: grey 0 0 5px;
+    border-radius: 25px;
+    margin-left: 30%;
+    width : 40%;
+    height: 30em;
+}
+
+#flex_form_login {
+    display: flex;
+    flex-direction: column;
+    gap : 5em;
+}
+#flex_form_email {
+    display: flex;
+    flex-direction: column;
+    gap : 1em;
+    margin-left: 30%;
+}
+#form_email {
+    border-radius: 5px;
+    width: 50%;
+    padding: 0.5em;
+}
+#flex_form_mdp {
+    display: flex;
+    flex-direction: column;
+    gap : 1em;
+    margin-left: 30%; 
+}
+#form_mdp {
+    border-radius: 5px;
+    width: 50%;
+    padding: 0.5em;
+}
+#recup_mdp {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+#form_submit {
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 25px;
+    padding: 1em; 
+    background-color: white;
+    box-shadow: grey 1px 1px 2px;
+    width: 25%;
+    margin-left: 20.5em;
+}
+#form_submit:hover {
+    background-color: aliceblue;
 }
