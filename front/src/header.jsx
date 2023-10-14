@@ -4,10 +4,6 @@ const nb_annonces = 536016;
 
 export function Header() {
 
-    const pageLogin = () => {
-        alert("La page de Log In");
-      }
-
     const pageCreaCompte = () => {
         alert("La page de création de compte");
     }
@@ -17,7 +13,7 @@ export function Header() {
             <div id = "flex_header">
                 <a href = "http://localhost:5173/?"><h1 id = "jb_name">O'Boulot</h1></a>
                 <div id = "flex_login">
-                    <p onClick = {pageLogin} id = "login">Se Connecter</p>
+                    <a href = "http://localhost:5173/login"><p id = "login">Se Connecter</p></a>
                     <p onClick = {pageCreaCompte} id = "inscription">Créer un compte</p>
                 </div>
             </div>

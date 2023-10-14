@@ -1,34 +1,45 @@
-import { useState } from 'react'
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./style.css";
 import {Header} from "./header.jsx";
 import {Login} from "./login.jsx";
+import {Footer} from "./footer.jsx";
 
-const trop_style = {color : "#2c038c"};
-
-const domaines = [ 
-  "Administration",
-  "Banque",
-  "Commerce",
-  "Défense et Sécurité"
-]
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <>
+        <body>
+          <header>
+            <Header/>
+          </header>
+          <footer>
+            <Footer/>
+          </footer>
+        </body>
+      </>
+    )
+  },
+  {
+    path: '/login',
+    element: (
+      <>
+        <body>
+          <header>
+            <Header/>
+          </header>
+          <Login/>
+          <footer>
+            <Footer/>
+          </footer>
+        </body>
+      </>
+    )
+  }
+])
 
 function App() {
-
-  
-  const clickDomaine = () => {
-    alert("La page en question");
-  }
-
-  return (
-    <>
-      <body>
-        <header>
-          <Header/>
-        </header>
-          <Login/>
-      </body>
-    </>
-  )
+  return <RouterProvider router = {router}/>
 }
 
-export default App
+export default App;

@@ -111,13 +111,6 @@
         height: 40%;
     }
 
-/*Body*/
-
-body {
-    margin: none;
-    background-color: #fff;
-}
-
 /*Page de Login*/
 
 #login_body {
@@ -178,4 +171,39 @@ body {
 }
 #form_submit:hover {
     background-color: aliceblue;
+}
+
+/*Footer*/
+
+#footer_body {
+    background-color: #0976e3;
+    height: 12em;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: solid;
+    border-top-style: double;
+}
+
+#footer_subtitle {
+    color: white;
+    margin-top: 2em;
+    margin-left: 2em;
+    font-size: 1vw;
+}
+
+.footer_list {
+    margin-top: 1.5em;
+    list-style-type: none;
+}
+.footer_hyper {
+    color: black;
+}
+#footer_img {
+    width: 70px;
+    height: 70px;
+}
+#footer_flex {
+    display: flex;
+    gap: 1em;
 }
