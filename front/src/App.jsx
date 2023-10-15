@@ -3,6 +3,8 @@ import "./style.css";
 import {Header} from "./header.jsx";
 import {Login} from "./login.jsx";
 import {Footer} from "./footer.jsx";
+import {Inscription} from "./inscription.jsx";
+import { Header_alt } from "./header_alt";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +28,25 @@ const router = createBrowserRouter([
       <>
         <body>
           <header>
-            <Header/>
+            <Header_alt/>
           </header>
           <Login/>
+          <footer>
+            <Footer/>
+          </footer>
+        </body>
+      </>
+    )
+  },
+  {
+    path: '/inscription',
+    element: (
+      <>
+        <body>
+          <header>
+            <Header_alt/>
+          </header>
+          <Inscription/>
           <footer>
             <Footer/>
           </footer>

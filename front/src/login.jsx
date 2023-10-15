@@ -14,11 +14,11 @@ export function Login() {
                 <form id = "flex_form_login">
                     <div id = "flex_form_email">
                         <label for = "email">Adresse mail</label>                    
-                        <input type = "email" id = "form_email" name = "email"/>
+                        <input type = "email" id = "form_email" name = "email" required/>
                     </div>
                     <div id = "flex_form_mdp">
                         <label for = "mdp">Mot de passe</label>
-                        <input type = "text" id = "form_mdp" name = "mdp"/>
+                        <input type = "password" id = "form_mdp" name = "mdp" required/>
                     </div>
                     <input onClick = {login_in} type = "submit" id = "form_submit" value = "Se connecter"/>
                 </form>
