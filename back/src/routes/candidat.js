@@ -1,5 +1,6 @@
 import express from "express";
 import { createCandidat, getCandidat, updateCandidat, deleteCandidat } from "./../controlers/candidat.js";
+import { authenticateToken } from "./../middlewares/jsonwebtoken.js";
 
 const router = express.Router();
 

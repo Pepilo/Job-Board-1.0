@@ -22,7 +22,7 @@ export const getAllCandidature = async (req, res) => {
             FROM candidature
         `)
         console.log(getAll.rows);
-        res.status(201).json({ message: "Candidature envoyé" });
+        res.status(201).json(getAll.rows);
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "La requête a échoué" })
@@ -34,10 +34,10 @@ export const deleteCanditature = async (req, res) => {
     try {
         await client.query(`
             DELETE FROM candidature
-            id_candidature = $1
+            WHERE id_candidature = $1
         `, [ id ])
         console.log(getAll.rows);
-        res.status(201).json({ message: "Candidature envoyé" });
+        res.status(201).json({ message: "Candidature supprimé" });
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "La requête a échoué" })

@@ -22,7 +22,7 @@ export const getAnnonce = async (req, res) => {
             `SELECT * FROM annonce`
         )
         console.log(get.rows);
-        res.status(201).json({message : "Annonce get"});
+        res.status(201).json(get.rows);
     } catch (error) {
         console.error(error);
         res.status(400).json({message : "La requête a échouée"});

@@ -1,15 +1,18 @@
 import {client} from "./../config/connexion_bdd.js";
+import bcrypt from "bcrypt";
 
 export const createCandidat = async (req, res) => {
-    const { nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, compétences, experience, handicap } = req.body;
+    const { nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap } = req.body;
+    const saltrounds = 10;
     try {
+        const hachedPassword = await bcrypt.hash(mdp, saltrounds);
         await client.query (`
             INSERT INTO candidat
-            (nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, compétences, experience, handicap)
+            (nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap)
             VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-        `, [nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, compétences, experience, handicap])
-        res.status(201).json({ message: "Le candidat a été créé" });
+        `, [nom, prenom, email, hachedPassword, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap])
         console.log(nom);
+        res.status(201).json({ message: "Le candidat a été créé" });
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "La requête a échoué" })     
@@ -22,7 +25,7 @@ export const getCandidat = async (req, res) => {
             SELECT * FROM candidat
         `)
         console.log(get.rows);
-        res.status(201).json({message : "Candidat get"});
+        res.status(201).json(get.rows);
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "La requête a échoué" });       

@@ -28,8 +28,8 @@ WHERE nom = 'SCRIMALI';
 
 -- TEST TABLE annonce
 INSERT INTO annonce
-(SIRET, domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis)
-VALUES(1548653256487956487, 'Informatique', 'dev', 'montpellier', 34, 'Occitanie', 'CDI', 'HYBRIDE', 2500, 'Cest bien', 'aucun');
+(domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis)
+VALUES('Informatique', 'dev', 'montpellier', 34, 'Occitanie', 'CDI', 'HYBRIDE', 2500, 'Cest bien', 'aucun');
 
 SELECT * FROM annonce;
 

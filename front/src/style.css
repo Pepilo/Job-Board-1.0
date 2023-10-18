@@ -12,6 +12,7 @@
         margin-top: 1em;
         position: relative;
         width: 100%;
+        margin-bottom: 5em;
     }
     #flex_header {
         display : flex;
@@ -33,6 +34,7 @@
     }
     #login {
         border-style: solid;
+        border-color: grey;
         border-width: 1px;
         border-radius: 25px;
         padding: 1em; 
@@ -45,7 +47,7 @@
     }
     #inscription {
         color: white;
-        background-color: #0976e3;
+        background-color: #00acee ;
         padding: 1em;
         box-shadow: grey 1px 1px 2px;
         border-radius: 1em;
@@ -55,7 +57,7 @@
         opacity: 50%;
     }
     
-    img {
+    #img_header {
         margin-top: 1em;
         width : 100%;
     }
@@ -102,10 +104,83 @@
     #searchbar_search {
         border-radius: 25em;
         margin-left: 1em;
-        background-color: #0976e3;
+        background-color: #00acee ;
         height: 5vw;
         width: 5vw;
     }
+
+/*Annonce list*/
+
+#flex_annonce {
+    display: flex;
+    flex-wrap: wrap;
+}
+.case {
+    width: 30em;
+    margin-left:6em;
+    margin-bottom: 5em;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: grey 1px 1px 2px 1px;
+}
+.case:hover {
+    opacity: 75%;
+}
+.annonce_img {
+    width: 30em;
+    height: 20em;
+    border-radius: 15px 15px 0px 0px;
+}
+.titre_section {
+    margin-left: 4em;
+    margin-bottom: 1.5em;
+}
+.titre_annonce {
+    text-decoration: underline;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+.flex_condition {
+    display: flex;
+}
+.condition {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+
+/*Middle*/
+
+#middle_body {
+    margin-top: 5em;
+    padding-top: 3em;
+    padding-left: 3em;
+    padding-right: 3em;
+    box-shadow: grey 0 0 5px;
+    border-radius: 25px;
+    margin-left: 35vw;
+    width : 20%;
+    height: 10em;
+}
+#phrase_choix {
+    margin-bottom: 3em;
+    font-size: 1.1em;
+    margin-left: 1em;
+}
+#flex_middle {
+    display: flex;
+    gap : 4em;
+}
+.choix {
+    color: white;
+        background-color: #00acee ;
+        padding: 1em;
+        box-shadow: grey 1px 1px 2px;
+        border-radius: 1em;
+        height: 35%;
+        width: 85%;
+}
 
 /*Page de Login*/
 
@@ -182,6 +257,17 @@
     width : 40%;
     height: 52em;
 }
+#inscriptionr_body {
+    margin-top: 5em;
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    box-shadow: grey 0 0 5px;
+    border-radius: 25px;
+    margin-left: 25vw;
+    width : 40%;
+    height: 38em;
+}
 #flex_form_inscription {
     display: flex;
     flex-direction: column;
@@ -217,7 +303,7 @@
 }
 #form_sinscrire {
     color: white;
-    background-color: #0976e3;
+    background-color: #00acee ;
     padding: 1em;
     box-shadow: grey 1px 1px 2px;
     border-radius: 1em;
@@ -233,13 +319,51 @@
     margin-top: 1.5em;
 }
 
+/*Annonce_type*/
+
+#case_annonce{
+    margin-left: 15vw;
+    margin-right: 15vw;
+    border-radius: 15px;
+    height: 24vw;
+    display: flex;
+    box-shadow: grey 1px 1px 2px 1px;
+}
+.flex_annonce {
+    display: flex;
+}
+.sous_titre_annonce {
+    margin-top: 1.5em;
+    margin-left: 1em;
+    text-decoration: underline;
+}
+.contenu_annonce {
+    margin-top: 0.5em;
+    margin-left: 1em;
+    margin-right: 2em;
+}
+#bouton_annonce {
+    color: white;
+    background-color: #00acee ;
+    padding: 1em;
+    padding-left: 3em;
+    box-shadow: grey 1px 1px 2px;
+    border-radius: 1em;
+    width: 5vw;
+    margin-top: 5.5vw;
+    margin-left: 33vw;
+}
+#bouton_annonce:hover {
+    opacity: 50%;
+}
+
 /*Footer*/
 
 #footer_body {
-    background-color: #0976e3;
+    background-color: #00acee ;
+    margin-top: 5em;
     height: 12em;
     width: 100%;
-    margin-top: 5em;
     border-top: solid;
     border-top-style: double;
 }
