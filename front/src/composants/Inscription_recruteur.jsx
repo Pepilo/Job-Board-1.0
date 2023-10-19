@@ -1,27 +1,40 @@
 import ky from "ky";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export function InscriptionRecruteur() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
             await ky.post("http://localhost:8080/recruteur/", {
                 json: {
+                    siret: data.siret,
                     nom: data.nom,
-                    prenom: data.prenom,
+                    adresse: data.adresse,
+                    descriptif: data.descriptif,
                     email: data.email,
                     tel: data.tel,
+                    images: data.descriptif,
                     mdp: data.mdp
                 }
             })
+            navigate("/");
         } catch (error) {
-            console.log("nique ta mère");
+            console.log("Erreur");
         }
     }
 
     return (
         <form>
+            <label htmlFor="siret"></label>
+            <input
+                id="siret"
+                placeholder="siret"
+                {...register("siret", { required: true })}
+            />
+
             <label htmlFor="nom"></label>
             <input
                 id="nom"
@@ -29,11 +42,18 @@ export function InscriptionRecruteur() {
                 {...register("nom", { required: true })}
             />
 
-            <label htmlFor="prenom"></label>
+            <label htmlFor="adresse"></label>
             <input
-                id="prenom"
-                placeholder="prenom"
-                {...register("prenom", { required: true })}
+                id="adresse"
+                placeholder="adresse"
+                {...register("adresse", { required: true })}
+            />
+
+            <label htmlFor="descriptif"></label>
+            <input
+                id="descriptif"
+                placeholder="descriptif"
+                {...register("descriptif", { required: true })}
             />
 
             <label htmlFor="email"></label>
@@ -50,6 +70,14 @@ export function InscriptionRecruteur() {
                 placeholder="tel"
                 {...register("tel", { required: true })}
             />
+
+            {/* sera ajouter en même temps que les fonctionnalités de multer */}
+            {/* <label htmlFor="images"></label>
+            <input
+                id="images"
+                placeholder="images"
+                {...register("images")}
+            /> */}
 
             <label htmlFor="mdp"></label>
             <input

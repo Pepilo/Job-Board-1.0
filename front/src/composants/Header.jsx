@@ -1,18 +1,18 @@
+import { NavLink } from "react-router-dom";
 import banniere_site from "../images_jb/banniere_mainpage.webp";
 import loupe from "../images_jb/loupe.png";
 
 const nb_annonces = 536016;
 
 export function Header({connected, affSearch}) {
-
     return (
         <>
             <div id = "flex_header">
-                <a href = "http://localhost:5173/"><h1 id = "jb_name">O'Boulot</h1></a>
+                <NavLink to={"/"} ><h1 id = "jb_name">O'Boulot</h1></NavLink>
                 {!connected ?
                     <div id = "flex_login">
-                        <a href = "http://localhost:5173/login"><p id = "login">Se Connecter</p></a>
-                        <a href = "http://localhost:5173/middle"><p id = "inscription">Créer un compte</p></a>
+                        <NavLink to={"/login"}><p id="login">Se Connecter</p></NavLink>
+                        <NavLink to={"/middle"}><p id = "inscription">Créer un compte</p></NavLink>
                     </div> :
                     <p></p>
                 }

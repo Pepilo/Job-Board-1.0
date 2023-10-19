@@ -12,7 +12,7 @@ export function Annonce_List() {
             console.log(data);
             setData(data);
         } catch (error) {
-            
+            console.log(error);
         }
     }
 

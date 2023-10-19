@@ -6,20 +6,15 @@ export const generateToken = (user) => {
         user_role: user.user_role,
     };
 
-    if (user.user_role === 'candidat' || user.user_role === 'recruteur') {
-        payload.nom = user.nom;
-        payload.prenom = user.prenom;
-    }
-
     switch(user.user_role) {
         case 'admin':
-            payload.id = user.id_admin;
+            payload.id = user.id_utilisateur;
             break;
         case 'candidat':
-            payload.id = user.id_candidat;
+            payload.id = user.id_utilisateur;
             break;
         case 'recruteur':
-            payload.id = user.id_recruteur;
+            payload.id = user.id_utilisateur;
             break;
         default:
             console.log("Une erreur est intervenue, vous n'avez pas de role");
@@ -45,8 +40,10 @@ export const authenticateToken = (roles) => {
             req.user = decoded;
 
             if (roles.includes(decoded.user_role)) {
+                console.log(req.user);
                 next();
             } else {
+                console.log("problème jsonwebtoken");
                 res.status(403).json({ message: "Vous n'avez pas les permissions nécessaires pour cette action"});
             }
         });
