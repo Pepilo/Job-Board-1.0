@@ -4,7 +4,7 @@ import { authenticateToken } from "./../middlewares/jsonwebtoken.js";
 
 const router = express.Router();
 
-router.post('/', authenticateToken(['candidat']), createCandidature);
+router.post('/:id', createCandidature);
 router.get('/', authenticateToken(['recruteur', 'admin']), getAllCandidature);
 router.delete('/:id', deleteCanditature);
 

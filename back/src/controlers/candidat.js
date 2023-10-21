@@ -32,6 +32,22 @@ export const getAllCandidat = async (req, res) => {
     }
 }
 
+export const getCandidatById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await client.query(`
+            SELECT *
+            FROM candidat
+            WHERE id_candidat = $1
+        `, [ id ])
+        console.log(result.rows);
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ message: "La requête a échoué" });       
+    }
+}
+
 export const updateCandidat = async (req, res) => {
     const { nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap } = req.body;
     const { id } = req.params;

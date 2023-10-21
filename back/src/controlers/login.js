@@ -6,13 +6,13 @@ export const login = async (req, res) => {
     const { email, mdp } = req.body;
 
     const result = await client.query(`
-        SELECT email, mdp, user_role, id_candidat AS id_utilisateur FROM candidat
+        SELECT nom, prenom, email, mdp, user_role, id_candidat AS id_utilisateur FROM candidat
         WHERE email = $1
         UNION ALL
-        SELECT email, mdp, user_role, id_recruteur AS id_utilisateur FROM recruteur
+        SELECT nom, siret AS prenom, email, mdp, user_role, id_recruteur AS id_utilisateur FROM recruteur
         WHERE email = $1
         UNION ALL
-        SELECT email, mdp, user_role, id_admin AS id_utilisateur FROM "admin"
+        SELECT nom, prenom, email, mdp, user_role, id_admin AS id_utilisateur FROM "admin"
         WHERE email = $1;
     `, [ email ]);
 

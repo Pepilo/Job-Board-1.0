@@ -1,6 +1,7 @@
 import ky from "ky";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 export function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -16,34 +17,34 @@ export function Login() {
             });
             const jsonData = await response.json();
             const accessToken = jsonData.accessToken;
-    
+
             localStorage.setItem('Authorization', accessToken);
-            navigate("/utilisateur");
-            
-            console.log("connexion réussie");
+
+            const decoded = jwtDecode(accessToken);
+            console.log(decoded.id);
+            window.location.href = `/utilisateur/${decoded.id}`;
+
         } catch (error) {
             console.log("Erreur", error);
         }
     };
-    
 
     return (
-        <form>
-            <label htmlFor="email"></label>
-            <input
-                id="email"
-                placeholder="email"
-                {...register("email", { required: true })}
-            />
-
-            <label htmlFor="mdp"></label>
-            <input
-                id="mdp"
-                placeholder="mdp"
-                {...register("mdp", { required: true })}
-            />
-
-            <button onClick={handleSubmit(onSubmit)}>Connexion</button>
-        </form>
+        <div id = "login_body">
+            <form id = "flex_form">
+                <div className = "flex_form_login">
+                    <h2>Email</h2>
+                    <label htmlFor = "email"></label>
+                    <input className = "form_login" {...register("email", { required: true })}/>
+                </div>
+                <div className = "flex_form_login">
+                    <h2>Mot de Passe</h2>
+                    <label htmlFor = "mdp"></label>
+                    <input type = "password" className = "form_login" {...register("mdp", { required: true })}/>
+                </div>
+                <button onClick={handleSubmit(onSubmit)} id = "form_submit">Connexion</button>
+            </form>
+            <p id = "recup_mdp">Mot de passe oublié?</p>
+        </div>
     )
 }

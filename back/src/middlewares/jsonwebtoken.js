@@ -9,12 +9,18 @@ export const generateToken = (user) => {
     switch(user.user_role) {
         case 'admin':
             payload.id = user.id_utilisateur;
+            payload.id = user.id_utilisateur;
+            payload.nom = user.nom;
             break;
         case 'candidat':
-            payload.id = user.id_utilisateur;
+            payload.id = user.id_utilisateur,
+            payload.nom = user.nom;
+            payload.prenom = user.prenom;
             break;
         case 'recruteur':
             payload.id = user.id_utilisateur;
+            payload.nom = user.nom;
+            payload.siret = user.prenom
             break;
         default:
             console.log("Une erreur est intervenue, vous n'avez pas de role");

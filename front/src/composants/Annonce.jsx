@@ -1,25 +1,48 @@
+import ky from "ky";
+import { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 export function Annonce() {
+
+    const [data, setData] = useState();
+
+    let {id} = useParams();
+
+    const getAnnonce = async () => {
+        try {
+            const data = await ky.get(`http://localhost:8080/annonce/${id}`).json();
+            console.log(data);
+            setData(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect( () => {
+        getAnnonce();
+    }, [])
+
     return (
-        <>         
-            <div id = "case_annonce">
-                <div>
-                    {/* <img src = {hardeur} className = "annonce_img"/> */}
-                    <h1 className = "titre_annonce">Stewart</h1>
-                    <div className = "flex_condition">
-                        <p className = "condition">CDD</p>
-                        <p className = "condition">Montpellier, 34, Occitanie</p>
-                        <p className = "condition">Hybride</p>
-                        <p className = "condition">8000k</p>
+        <>
+            {data && data.map(item => (         
+                <div id = "case_annonce">                    
+                    <div>
+                        <h1 className = "titre_annonce">{item.poste}</h1>
+                        <div className = "flex_condition">
+                            <p className = "condition">{item.contrat}</p>
+                            <p className = "condition">{item.ville}, {item.departement}, {item.region}</p>
+                            <p className = "condition">{item.conditions}</p>
+                            <p className = "condition">{item.salaire}</p>
+                        </div>
+                    </div>
+                    <div>                   
+                            <h2 className = "sous_titre_annonce">Descriptif du poste</h2>
+                            <p className = "contenu_annonce">{item.descriptif}</p>                    
+                            <h2 className = "sous_titre_annonce">Pré-requis</h2>
+                            <p className = "contenu_annonce">{item.pre_requis}</p>
+                            <NavLink to={{ pathname:`/postulation/${id}`, state: { id_annonce: id }}}><p id = "bouton_annonce">Postuler</p></NavLink>
                     </div>
                 </div>
-                <div>                   
-                        <h2 className = "sous_titre_annonce">Descriptif du poste</h2>
-                        <p className = "contenu_annonce">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae beatae odio ipsum! Quia maxime excepturi hic, beatae vitae numquam deleniti ipsam, eum debitis, autem optio incidunt sit sunt voluptas alias.</p>                    
-                        <h2 className = "sous_titre_annonce">Pré-requis</h2>
-                        <p className = "contenu_annonce">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam animi porro nemo illum rem, corporis corrupti suscipit ex odio qui fugiat sequi quibusdam vel fuga numquam laudantium et molestiae ipsa.</p>
-                        <p id = "bouton_annonce">Postuler</p>
-                </div>
-            </div>          
+            ))}          
         </>
     )
 }

@@ -1,13 +1,14 @@
 import { client } from "./../config/connexion_bdd.js";
 
 export const createCandidature = async (req, res) => {
-    const { id_annonce, id_candidat, nom, prenom, email, cv, lettre_de_motivation } = req.body;
+    const { nom, prenom, email, cv, lettre_de_motivation } = req.body;
+    const { id } = req.params;
     try {
         await client.query(`
             INSERT INTO candidature
-            (id_annonce, id_candidat, nom, prenom, email, cv, lettre_de_motivation)
-            VALUES($1, $2, $3, $4, $5, $6, $7)
-        `, [ id_annonce, id_candidat, nom, prenom, email, cv, lettre_de_motivation ])
+            (id_annonce, nom, prenom, email, cv, lettre_de_motivation)
+            VALUES($1, $2, $3, $4, $5, $6)
+        `, [ id, nom, prenom, email, cv, lettre_de_motivation ])
         res.status(201).json({ message: "Candidature envoyé" });
     } catch (error) {
         console.error(error);

@@ -26,7 +26,7 @@ export function InscriptionCandidat() {
     }
 
     return (
-           <div id = "inscription_body">
+           <div id = "inscription_body" enctype = "multipart/form-data">
                 <form id = "flex_form_inscription">
                     <p id = "inscription_disclaim">Tout les champs sont obligatoires.</p>
                     <div id = "flex_form_nomprenom">

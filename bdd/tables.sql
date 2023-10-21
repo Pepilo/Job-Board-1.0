@@ -2,6 +2,8 @@
 CREATE TABLE IF NOT EXISTS "admin"(
     id_admin SERIAL PRIMARY KEY,
     user_role VARCHAR(5) DEFAULT 'admin' NOT NULL,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     mdp VARCHAR(255) NOT NULL
 );
@@ -81,7 +83,6 @@ CREATE TABLE IF NOT EXISTS candidat(
 CREATE TABLE IF NOT EXISTS candidature(
     id_candidature SERIAL PRIMARY KEY,
     id_annonce BIGINT NOT NULL REFERENCES annonce(id_annonce),
-    id_candidat BIGINT NOT NULL REFERENCES candidat(id_candidat),
     nom VARCHAR(255) NOT NULL,
     prenom VARCHAR NOT NULL,
     email VARCHAR(255) NOT NULL,

@@ -27,66 +27,48 @@ export function InscriptionRecruteur() {
     }
 
     return (
-        <form>
-            <label htmlFor="siret"></label>
-            <input
-                id="siret"
-                placeholder="siret"
-                {...register("siret", { required: true })}
-            />
-
-            <label htmlFor="nom"></label>
-            <input
-                id="nom"
-                placeholder="nom"
-                {...register("nom", { required: true })}
-            />
-
-            <label htmlFor="adresse"></label>
-            <input
-                id="adresse"
-                placeholder="adresse"
-                {...register("adresse", { required: true })}
-            />
-
-            <label htmlFor="descriptif"></label>
-            <input
-                id="descriptif"
-                placeholder="descriptif"
-                {...register("descriptif", { required: true })}
-            />
-
-            <label htmlFor="email"></label>
-            <input
-                id="email"
-                placeholder="email"
-                {...register("email", { required: true })}
-            />
-
-            <label htmlFor="tel"></label>
-            <input
-            type="number"
-                id="tel"
-                placeholder="tel"
-                {...register("tel", { required: true })}
-            />
-
-            {/* sera ajouter en même temps que les fonctionnalités de multer */}
+        <div id = "inscription_body" enctype = "multipart/form-data">
+             <form id = "flex_form_inscription">
+                 <p id = "inscription_disclaim">Tout les champs sont obligatoires.</p>
+                 <div id = "flex_form_nomprenom">
+                     <div className = "flex_form_nom">
+                         <label htmlFor = "siret">SIRET</label>                    
+                         <input type = "text" className = "form_nom" name = "siret" {...register("siret", { required: true })}/>
+                     </div>
+                     <div className = "flex_form_nom">
+                         <label htmlFor = "nom">Nom</label>                    
+                         <input type = "text" className = "form_nom" name = "nom" {...register("nom", { required: true })}/>
+                     </div>
+                 </div>
+                 <div className = "flex_form_base">
+                     <label htmlFor = "adresse">Adresse</label>                    
+                     <input type = "text" className = "form_base" name = "adresse" {...register("adresse", { required: true })}/>
+                 </div>
+                 <div className = "flex_form_base">
+                     <label htmlFor = "descriptif">Descriptif</label>
+                     <textarea className = "form_base" name = "descriptif" {...register("descriptif", { required: true })}/>
+                 </div>
+                 <div className = "flex_form_base">
+                     <label htmlFor = "email">Adresse mail</label>
+                     <input type = "email" className = "form_base" name = "email" {...register("email", { required: true })}/>
+                 </div>
+                 <div className = "flex_form_base">
+                     <label htmlFor = "tel">Numéro de télephone</label>
+                     <input type = "tel" className = "form_base" name = "tel" {...register("tel", { required: true })}/>
+                 </div>
+                 {/* sera ajouter en même temps que les fonctionnalités de multer */}
             {/* <label htmlFor="images"></label>
             <input
                 id="images"
                 placeholder="images"
                 {...register("images")}
             /> */}
-
-            <label htmlFor="mdp"></label>
-            <input
-                id="mdp"
-                placeholder="mdp"
-                {...register("mdp", { required: true })}
-            />
-
-            <button onClick={handleSubmit(onSubmit)}>Valider</button>
-        </form>
-    )
+                 <div className = "flex_form_base">
+                    <label htmlFor = "mdp">Mot de passe</label>
+                    <input type = "password" className = "form_base" name = "mdp" {...register("mdp", {required: true})}/>
+                </div>                 
+                 <button onClick = {handleSubmit(onSubmit)} id = "form_sinscrire">Valider</button>
+             </form>
+        </div>
+   )
 }

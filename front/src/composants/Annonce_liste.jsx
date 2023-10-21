@@ -8,7 +8,7 @@ export function Annonce_List() {
 
     const getAnnonces = async () => {
         try {
-            const data = await ky.get("http://localhost:8080/annonce/").json();
+            const data = await ky.get(`http://localhost:8080/annonce/`).json();
             console.log(data);
             setData(data);
         } catch (error) {
@@ -25,7 +25,7 @@ export function Annonce_List() {
             <h1 className = "titre_section">Annonces à la une</h1>
             <div id = "flex_annonce">
                 {data && data.map(item => (
-                <NavLink key = {item.id_annonce} to = {`/annonce/${item.id_annonce}`}>
+                <NavLink key = {item.id_annonce} id = "navlink_annonce" to = {`/annonce/${item.id_annonce}`}>
                     <div className = "case">
                         <img src = {item.image} className = "annonce_img"/>
                         <h2 className = "titre_annonce">{item.poste}</h2>
