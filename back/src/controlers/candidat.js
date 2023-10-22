@@ -49,27 +49,28 @@ export const getCandidatById = async (req, res) => {
 }
 
 export const updateCandidat = async (req, res) => {
-    const { nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap } = req.body;
+    const { nom, prenom, email, tel, adresse, CV, lettre_de_motivation, situation, competence, experience } = req.body;
     const { id } = req.params;
     const userId = req.user.id;
+    const userRole = req.user.user_role;
 
-    if (String(id) !== String(userId)) {
-        console.log("Vous n'avez pas l'authorisation de modifier le compte d'un autre utilisateur");
-        return res.status(403).json({ message: "Vous n'avez pas les permissions nécessaires pour modifier un compte qui ne vous appartiens pas" });
-    }
-
-    try {
-        await client.query(`
-            UPDATE candidat
-            SET nom = $1, prenom = $2, email = $3, mdp = $4, tel = $5, adresse = $6, cv = $7, lettre_de_motivation = $8,
-            situation = $9, competence = $10, experience = $11, handicap = $12
-            WHERE id_candidat = $13
-        `, [ nom, prenom, email, mdp, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, handicap, id ])
-        console.log("compte candidat modifié")
-        res.status(201).json({ message: "candidat modifié" });       
-    } catch (error) {
-        console.error(error)
-        res.status(400).json({ message: "La requête a échoué"})       
+    if (userRole === 'admin' || String(id) === String(userId)) {
+        try {
+            await client.query(`
+                UPDATE candidat
+                SET nom = $1, prenom = $2, email = $3, tel = $4, adresse = $5, cv = $6, lettre_de_motivation = $7,
+                situation = $8, competence = $9, experience = $10
+                WHERE id_candidat = $11
+            `, [ nom, prenom, email, tel, adresse, CV, lettre_de_motivation, situation, competence, experience, id ])
+            console.log("compte candidat modifié")
+            res.status(201).json({ message: "candidat modifié" });       
+        } catch (error) {
+            console.error(error)
+            res.status(400).json({ message: "La requête a échoué"})       
+        }
+    } else {
+            console.log("Vous n'avez pas l'authorisation de modifier le compte d'un autre utilisateur");
+            res.status(403).json({ message: "Vous n'avez pas les permissions nécessaires pour modifier un compte qui ne vous appartiens pas" });
     }
 }
 

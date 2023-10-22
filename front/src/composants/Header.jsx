@@ -3,10 +3,34 @@ import banniere_site from "../images_jb/banniere_mainpage.webp";
 import loupe from "../images_jb/loupe.png";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
+import Cookies from 'js-cookie';
+import logo from "../images_jb/logo.png"
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
-const nb_annonces = 536016;
+import 'react-toastify/dist/ReactToastify.css';
+
+const nb_annonces = 42;
 
 export function Header() {
+
+    useEffect(() => {
+        if (Cookies.get('inscription_reussie') === 'true') {
+            toast.success('Création de votre compte réussie!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            Cookies.remove('inscription_reussie');
+        }
+        console.log('La page est chargée !');
+    }, []);
+    
 
     const clickClack = async () => {
         const accessToken = localStorage.getItem('Authorization');
@@ -31,7 +55,7 @@ export function Header() {
     return (
         <>
             <div id = "flex_header">
-                <NavLink to={"/"} ><h1 id = "jb_name">O'Boulot</h1></NavLink>
+                <NavLink to={"/"} ><img src = {logo}/></NavLink>
                 {token == undefined?
                     <div id = "flex_login">
                         <NavLink to={"/login"}><p id="login">Se Connecter</p></NavLink>
@@ -45,11 +69,12 @@ export function Header() {
             </div>
             <img src = {banniere_site} id = "img_header"/>
             <p id = "acceuil">{nb_annonces} offres d'emplois disponibles</p>            
-            <form>
+            <form id = "flex_header_form">
                 <input type = "text" placeholder = "Poste" id = "searchbar_left"/>
                 <input type = "text" placeholder = "Ville, département, région" id = "searchbar_right"/>
                 <a href = "http://localhost:5176/recherche"><input type = "image" src = {loupe} id = "searchbar_search" alt = "Submit"/></a>
-            </form>       
+            </form>
+            <ToastContainer />       
         </>
     )
 }

@@ -35,11 +35,13 @@ export const authenticateToken = (roles) => {
         const token = req.headers['authorization'];
 
         if (!token) {
+            console.log("Le token est invalide");
             return res.status(401).json({ message: "Accès non autorisé" });
         }
 
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
             if (error) {
+                console.log("Le token est invalide");
                 return res.status(401).json({ message: "Le token est invalide" });
             }
 

@@ -1,6 +1,7 @@
 import ky from "ky";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 export function InscriptionCandidat() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,14 +20,15 @@ export function InscriptionCandidat() {
                     handicap: data.handicap
                 }
             })
-            navigate("/");
+            Cookies.set('inscription_reussie', 'true', { expires: 1 });
+            window.location.href = "/";
         } catch (error) {
             console.log("Erreur");
         }
     }
 
     return (
-           <div id = "inscription_body" enctype = "multipart/form-data">
+           <div id = "inscription_body">
                 <form id = "flex_form_inscription">
                     <p id = "inscription_disclaim">Tout les champs sont obligatoires.</p>
                     <div id = "flex_form_nomprenom">

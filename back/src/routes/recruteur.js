@@ -6,9 +6,9 @@ import { verifEmail } from "../middlewares/verifEmail.js";
 const router = express.Router();
 
 router.post('/', verifEmail, createRecruteur);
-router.get('/', authenticateToken(['admin']), getAllRecruteur);
+router.get('/', getAllRecruteur);
 router.get('/:search', getRecruteur);
-router.put('/:id', authenticateToken(['recruteur']), updateRecruteur);
+router.put('/:id', authenticateToken(['recruteur', 'admin']), updateRecruteur);
 router.delete('/:id', authenticateToken(['recruteur', 'admin']), deleteRecruteur);
 
 export default router;

@@ -60,26 +60,27 @@ export const getRecruteur = async (req, res) => {
 }
 
 export const updateRecruteur = async (req, res) => {
-    const { siret, nom, adresse, descriptif, email, tel, images, mdp } = req.body;
+    const { siret, nom, adresse, descriptif, email, tel } = req.body;
     const { id } = req.params;
     const userId = req.user.id;
-    
-    if (String(id) !== String(userId)) {
-        console.log("Vous n'avez pas l'authorisation de modifier le compte d'un autre utilisateur");
-        return res.status(403).json({ message: "Vous n'avez pas les permissions nécessaires pour modifier un compte qui ne vous appartiens pas" });
-    }
+    const userRole = req.user.user_role;
 
-    try {
-        await client.query(`
-            UPDATE recruteur
-            SET siret = $1, nom = $2, adresse = $3, descriptif = $4, email = $5, tel = $6, images = $7, mdp = $8
-            WHERE id_recruteur = $9
-        `, [ siret, nom, adresse, descriptif, email, tel, images, mdp, id ])
-        console.log("compte recruteur modifié")
-        res.status(201).json({ message: "recruteur modifié" });
-    } catch (error) {
-        console.error(error)
-        res.status(400).json({ message: "La requête a échoué"})
+    if (userRole === 'admin' || String(id) === String(userId)) {
+        try {
+            await client.query(`
+                UPDATE recruteur
+                SET siret = $1, nom = $2, adresse = $3, descriptif = $4, email = $5, tel = $6
+                WHERE id_recruteur = $7
+            `, [ siret, nom, adresse, descriptif, email, tel, id ])
+            console.log("compte recruteur modifié")
+            res.status(201).json({ message: "recruteur modifié" });
+        } catch (error) {
+            console.error(error)
+            res.status(400).json({ message: "La requête a échoué"})
+        }
+    } else {
+        console.log("Vous n'avez pas l'authorisation de modifier le compte d'un autre utilisateur");
+        res.status(403).json({ message: "Vous n'avez pas les permissions nécessaires pour modifier un compte qui ne vous appartiens pas" });
     }
 }
 

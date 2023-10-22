@@ -1,5 +1,6 @@
 import ky from "ky";
 import { useState, useEffect } from "react";
+import travail from "../images_jb/travail.jpg"
 import { NavLink, useParams } from "react-router-dom";
 export function Annonce() {
 
@@ -26,6 +27,7 @@ export function Annonce() {
             {data && data.map(item => (         
                 <div id = "case_annonce">                    
                     <div>
+                        <img src = {travail} className="annonce_img"/>
                         <h1 className = "titre_annonce">{item.poste}</h1>
                         <div className = "flex_condition">
                             <p className = "condition">{item.contrat}</p>

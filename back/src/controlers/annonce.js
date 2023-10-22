@@ -62,25 +62,24 @@ export const getAnnonceByIdRecruteur = async (req, res) => {
 }
 
 export const updateAnnonce = async (req, res) => {
-    const { id_recruteur, domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis } = req.body;
+    const { domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis } = req.body;
     const {id} = req.params;
     try {
         await client.query (
             `UPDATE annonce
             SET
-            id_recruteur = $2,
-            domaine = $3,
-            poste = $4,
-            ville = $5,
-            departement = $6,
-            region = $7,
-            contrat = $8,
-            conditions = $9,
-            salaire = $10,
-            descriptif = $11,
-            pre_requis = $12
-            WHERE id_annonce = $13`,
-            [ id_recruteur, domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis, id])
+            domaine = $1,
+            poste = $2,
+            ville = $3,
+            departement = $4,
+            region = $5,
+            contrat = $6,
+            conditions = $7,
+            salaire = $8,
+            descriptif = $9,
+            pre_requis = $10
+            WHERE id_annonce = $11`,
+            [ domaine, poste, ville, departement, region, contrat, conditions, salaire, descriptif, pre_requis, id])
         console.log("annonce modifié")
         res.status(201).json({ message: "annonce modifié" });
     } catch (error) {

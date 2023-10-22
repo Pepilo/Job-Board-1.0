@@ -1,0 +1,23 @@
+Page admin :
+    UD tous les recruteurs
+    CRUD toutes les annonces
+
+Page candidat :
+    UD son compte
+    multer pour ajouter cv et lettre de motivation
+
+Page recruteurs :
+    UD ses annonces
+    UD son compte
+    multer pour image de chaques annonces
+
+Barre de recherche :
+    rechercher par :
+        - poste (nom de l'annonce)
+        - ville / departement / region
+
+    recherche avancé :
+        - ville
+        - departement
+        - region
+        - domaine

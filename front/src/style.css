@@ -2,7 +2,6 @@
 
 * {
     margin : 0;
-    margin-top: 0.2em;
     padding: 0;
     font-family: 'Inter', sans-serif;
 }
@@ -26,7 +25,8 @@
         text-decoration: none;
     }
     #jb_name {
-        color : "#331a99"
+        color : "#331a99";
+        margin-top: 0.5em;
     }
 
     #flex_login {
@@ -34,6 +34,7 @@
         gap : 3em;
     }
     #login {
+        margin-top: 3.5em;
         border-style: solid;
         border-color: grey;
         border-width: 1px;
@@ -41,32 +42,32 @@
         padding: 1em; 
         background-color: white;
         box-shadow: grey 1px 1px 2px;
-        height: 35%;
+        height: 15%;
     }
     #login:hover {
         background-color: aliceblue;
     }
     #inscription {
+        margin-top: 3.5em;
         color: white;
         background-color: #00acee ;
         padding: 1em;
         box-shadow: grey 1px 1px 2px;
         border-radius: 1em;
-        height: 35%;
+        height: 15%;
     }
     #inscription:hover {
         opacity: 50%;
     }
     
     #img_header {
-        margin-top: 1em;
         width : 100%;
     }
 
     #acceuil {
         position: absolute;
-        top: 26vh;
-        left: 28%;
+        top: 36vh;
+        left: 32%;
         color: white;
         font-size: 3vw;
         width: 50%;
@@ -77,7 +78,7 @@
         display: flex;
         justify-content: center;
         position: absolute;
-        top: 29em;
+        top: 35.5em;
         left: 13%;
         width: 80%;
         height: 25%;
@@ -314,6 +315,46 @@
     margin-top: 1.5em;
 }
 
+/*Profil*/
+
+.body_profil {
+    margin-top: 5em;
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    box-shadow: grey 0 0 5px;
+    border-radius: 1em;
+    margin-left: 17vw;
+    width : 60%;
+    height: 35em;
+}
+.role_utilisateur {
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    text-decoration: underline;
+}
+.info_profil {
+    margin-bottom: 1em;
+}
+.encart {
+    font-weight:900;
+}
+.option_bouton {
+    border-style: solid;
+    border-color: grey;
+    border-width: 1px;
+    border-radius: 25px;
+    padding: 1em; 
+    background-color: white;
+    box-shadow: grey 1px 1px 2px;
+}
+.flex_boutons {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+    margin-top: 5em;
+}
+
 /*Annonce_type*/
 
 #case_annonce{
@@ -346,10 +387,43 @@
     box-shadow: grey 1px 1px 2px;
     border-radius: 1em;
     width: 5vw;
-    margin-left: 35vw;
+    margin-left: 32vw;
 }
 #bouton_annonce:hover {
     opacity: 50%;
+}
+
+/*Creer annonce*/
+
+#creannonce_body {
+    margin-top: 5em;
+    padding-top: 3em;
+    padding-left: 5em;
+    padding-right: 5em;
+    box-shadow: grey 0 0 5px;
+    border-radius: 25px;
+    margin-left: 25vw;
+    width : 40%;
+    height: 61em;
+}
+.creannonce_item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
+#flex_localisation {
+    display: flex;
+    justify-content: space-between;
+}
+#creannonce_bouton {
+    margin-left: 15.5vw;
+    border-style: solid;
+    border-color: grey;
+    border-width: 1px;
+    border-radius: 25px;
+    padding: 1em; 
+    background-color: white;
+    box-shadow: grey 1px 1px 2px;
 }
 
 /*Postul*/
@@ -401,4 +475,26 @@
 #footer_flex {
     display: flex;
     gap: 1em;
+}
+
+/*Admin*/
+
+#boutons_admin {
+    margin-top: 10em;
+    display: flex;
+    justify-content: space-between;
+}
+.case_liste_admin {
+    padding: 1em;
+    width: 30em;
+    margin-left:6em;
+    margin-bottom: 5em;
+    border-radius: 15px;
+    border-width: 1px;
+    box-shadow: grey 1px 1px 2px 1px;
+}
+.flex_modif_suppr {
+    display: flex;
+    margin-left: 18em;
+    gap: 1.5em;
 }

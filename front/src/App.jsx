@@ -9,6 +9,8 @@ import { InscriptionCandidat } from "./composants/Inscription_candidat.jsx";
 import { ListeMesAnnonces } from "./composants/ListeMesAnnonces.jsx";
 import { CreerAnnonce } from "./composants/CreerAnnonce.jsx";
 import {Postulation} from "./composants/Postulation.jsx";
+import { ListAllUtilisateurs } from "./composants/ListAllUtilisateurs.jsx";
+import { Annonce_List } from "./composants/Annonce_liste.jsx";
 
 import { Acceuil } from "./pages/Acceuil.jsx";
 import { Login } from "./pages/Login.jsx";
@@ -31,6 +33,8 @@ export function App() {
         <Route path="/creer_annonce" element={<CreerAnnonce/>} />
         <Route path="/listeMesAnnonces" element={<ListeMesAnnonces/>} />
         <Route path = "/postulation/:id" element = {<Postulation/>} />
+        <Route path="/listAllUtilisateurs" element={<ListAllUtilisateurs />} />
+        <Route path="/listAnnonce" element={<Annonce_List />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

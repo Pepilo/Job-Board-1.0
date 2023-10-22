@@ -11,7 +11,7 @@ export function Utilisateur() {
         navigate("/creer_annonce")
     }
 
-    const SeeAnnonce = () => {
+    const RecruteurSeeAnnonce = () => {
         navigate("/listeMesAnnonces")
     }
 
@@ -36,42 +36,54 @@ export function Utilisateur() {
     return (
         <>
             {utilisateur[0]?.user_role === "recruteur" && (
-                <>
+                <div className = "body_profil">
                     <h1>{utilisateur[0].nom}</h1>
-                    <h2>{utilisateur[0].user_role}</h2>
-                    <p>{utilisateur[0].descriptif}</p>
-                    <p>{utilisateur[0].siret}</p>
-                    <p>{utilisateur[0].adresse}</p>
-                    <p>{utilisateur[0].email}</p>
-                    <p>{utilisateur[0].tel}</p>
-
-                    <button onClick={CreateAnnonce}>Créer une annonce</button>
-                    <button onClick={SeeAnnonce}>Voir sa liste d'annonce</button>
-                    <button>Modifer profil</button>
-                    <button>Supprimer profil</button>
-                </>
+                    <h2 className = "role_utilisateur">{utilisateur[0].user_role}</h2>
+                    <p className = "info_profil"><span className = "encart">Description:</span> {utilisateur[0].descriptif}</p>
+                    <p className = "info_profil"><span className = "encart">N° SIRET:</span> {utilisateur[0].siret}</p>
+                    <p className = "info_profil"><span className = "encart">Adresse:</span> {utilisateur[0].adresse}</p>
+                    <p className = "info_profil"><span className = "encart">Adresse email:</span> {utilisateur[0].email}</p>
+                    <p className = "info_profil"><span className = "encart">Numéro de télephone:</span> {utilisateur[0].tel}</p>
+                    <div className = "flex_boutons">
+                        <button className = "option_bouton" onClick={CreateAnnonce}>Créer une annonce</button>
+                        <button className = "option_bouton" onClick={RecruteurSeeAnnonce}>Voir sa liste d'annonce</button>
+                        <button className = "option_bouton">Modifer profil</button>
+                        <button className = "option_bouton">Supprimer profil</button>
+                    </div>
+                </div>
             )}
             {utilisateur[0]?.user_role === "candidat" && (
-                <>
-                    <h1>{utilisateur[0].user_role}</h1>
-                    <h1>{utilisateur[0].nom}</h1>
-                    <p>{utilisateur[0].prenom}</p>
-                    <p>{utilisateur[0].email}</p>
-                    <p>{utilisateur[0].tel}</p>
-                    <p>{utilisateur[0].adresse}</p>
-                    <p>{utilisateur[0].cv}</p>
-                    <p>{utilisateur[0].lettre_de_motivation}</p>
-                    <p>{utilisateur[0].situation}</p>
-                    <p>{utilisateur[0].competence}</p>
-                    <p>{utilisateur[0].experience}</p>
-                    <p>{utilisateur[0].handicap}</p>
-                </>
+                <div className = "body_profil">
+                    <h1>{utilisateur[0].prenom} {utilisateur[0].nom}</h1>
+                    <h2 className = "role_utilisateur">{utilisateur[0].user_role}</h2>
+                    <p className = "info_profil"><span className = "encart">Adresse email:</span> {utilisateur[0].email}</p>
+                    <p className = "info_profil"><span className = "encart">Numéro de télephone:</span> {utilisateur[0].tel}</p>
+                    <p className = "info_profil"><span className = "encart">Adresse:</span> {utilisateur[0].adresse}</p>
+                    <p className = "info_profil"><span className = "encart">Curriculum Vitae:</span> {utilisateur[0].cv}</p>
+                    <p className = "info_profil"><span className = "encart">Lettre de motivation:</span> {utilisateur[0].lettre_de_motivation}</p>
+                    <p className = "info_profil"><span className = "encart">Situation:</span> {utilisateur[0].situation}</p>
+                    <p className = "info_profil"><span className = "encart">Compétences:</span> {utilisateur[0].competence}</p>
+                    <p className = "info_profil"><span className = "encart">Expériences:</span> {utilisateur[0].experience}</p>
+                    <p className = "info_profil"><span className = "encart">Handicap:</span> {utilisateur[0].handicap}</p>
+                </div>
             )}
             {utilisateur[0]?.user_role === "admin" && (
-                <>
-                    <h1>{utilisateur[0].user_role}</h1>
-                    <p>{utilisateur[0].email}</p>
-                </>
+                <div className = "body_profil">
+                    <h1 className = "role_utilisateur">{utilisateur[0].user_role}</h1>
+                    <p className = "info_profil"><span className = "encart">Adresse email:</span> {utilisateur[0].email}</p>
+                    <div id = "boutons_admin">
+                        <button className = "option_bouton" onClick={() => navigate("/listAllUtilisateurs", { state: { utilisateur: "candidat" } })}>
+                            Voir la liste des candidats
+                        </button>
+                        <button className = "option_bouton" onClick={() => navigate("/listAllUtilisateurs", { state: { utilisateur: "recruteur" } })}>
+                            Voir la liste des recruteurs
+                        </button>
+                        <button className = "option_bouton" onClick={() => navigate("/listAnnonce")}>Voir la liste des annonces</button>
+                        <button className = "option_bouton">Voir la liste des candidatures</button>
+                        <button className = "option_bouton">Modifier profil</button>
+                        <button className = "option_bouton">Supprimer profil</button>
+                    </div>
+                </div>
             )}
         </>
     )

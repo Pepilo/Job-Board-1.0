@@ -41,7 +41,7 @@ CREATE TYPE domaine AS ENUM(
 -- Création de la TABLE annonce
 CREATE TABLE IF NOT EXISTS annonce (
     id_annonce SERIAL PRIMARY KEY,
-    id_recruteur BIGINT NOT NULL REFERENCES recruteur(id_recruteur),
+    id_recruteur BIGINT NOT NULL REFERENCES recruteur(id_recruteur) ON DELETE CASCADE,
     domaine domaine NOT NULL,
     poste VARCHAR(255) NOT NULL,
     ville VARCHAR(255) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS candidat(
 -- Création de la TABLE candidature
 CREATE TABLE IF NOT EXISTS candidature(
     id_candidature SERIAL PRIMARY KEY,
-    id_annonce BIGINT NOT NULL REFERENCES annonce(id_annonce),
+    id_annonce BIGINT NOT NULL REFERENCES annonce(id_annonce) ON DELETE CASCADE,
     nom VARCHAR(255) NOT NULL,
     prenom VARCHAR NOT NULL,
     email VARCHAR(255) NOT NULL,

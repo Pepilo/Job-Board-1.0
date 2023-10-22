@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', verifEmail, createCandidat);
 router.get('/', getAllCandidat);
 router.get('/:id', getCandidatById);
-router.put('/:id', authenticateToken(['candidat']), updateCandidat);
+router.put('/:id', authenticateToken(['candidat', 'admin']), updateCandidat);
 router.delete('/:id', authenticateToken(['candidat', 'admin']), deleteCandidat);
 
 export default router;
